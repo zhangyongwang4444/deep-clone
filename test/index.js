@@ -58,5 +58,13 @@ describe('deepClone', () => {
             assert(a.xxx !== a2.xxx)
             assert(a(1, 2) === a2(1, 2))
         })
+        it('环也可以复制', () => {
+            const a = { name: '旺旺' }
+            a.self = a
+            const a2 = deepClone(a)
+            assert(a !== a2)
+            assert(a.name === a2.name)
+            assert(a.self !== a2.self)
+        })
     })
 })
