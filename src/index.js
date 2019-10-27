@@ -19,8 +19,8 @@ function deepClone(sourse) {
                 dist = new Object()
             }
             cache.push([sourse, dist])
-            for (let key in sourse) {
-                dist[key] = deepClone(sourse[key])
+            for (let key in sourse) { // 默认会遍历原型上的属性
+                if (sourse.hasOwnProperty(key)) { dist[key] = deepClone(sourse[key]) }
             }
             return dist
         }
