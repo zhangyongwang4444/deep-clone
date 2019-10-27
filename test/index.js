@@ -91,5 +91,16 @@ describe('deepClone', () => {
             assert(a.xxx.yyy !== a2.xxx.yyy)
             assert(a.xxx !== a2.xxx)
         })
+        it('可以复制日期', () => {
+            // const a = /hi\d+/ig
+            const a = new Date()
+            a.xxx = { yyy: { zzz: 1 } }
+            const a2 = deepClone(a)
+            assert(a !== a2)
+            assert(a.getTime() === a2.getTime())
+            assert(a.xxx.yyy.zzz === a2.xxx.yyy.zzz)
+            assert(a.xxx.yyy !== a2.xxx.yyy)
+            assert(a.xxx !== a2.xxx)
+        })
     })
 })
