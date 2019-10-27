@@ -10,6 +10,8 @@ function deepClone(sourse) {
             }
             else if (sourse instanceof Function) {
                 dist = function () { return sourse.apply(this, arguments) }
+            } else if (sourse instanceof RegExp) {
+                dist = new RegExp(sourse.source, sourse.flags)
             }
             else {
                 dist = new Object()
